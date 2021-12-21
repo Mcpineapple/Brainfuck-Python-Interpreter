@@ -152,12 +152,18 @@ class bf_gui :
 
             elif text[instr_pointer] == '+':
                 """Increment byte at data pointer."""
-                array[pointer] += 1
+                if array[pointer] == 255:
+                    array[pointer] = 0
+                else:
+                    array[pointer] += 1
                 instr_pointer += 1
 
             elif text[instr_pointer] == '-':
                 """Decrement byte at data pointer."""
-                array[pointer] -= 1
+                if array[pointer] == 0:
+                    array[pointer] = 255
+                else:
+                    array[pointer] -= 1
                 instr_pointer += 1
 
             elif text[instr_pointer] == '.':
